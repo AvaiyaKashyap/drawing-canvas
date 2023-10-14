@@ -261,10 +261,10 @@ class CanvasSideBar extends HookWidget {
                         : 'Remove Background',
                   ),
                 ),
-                TextButton(
-                  child: const Text('Fork on Github'),
-                  onPressed: () => _launchUrl(kGithubRepo),
-                ),
+                // TextButton(
+                //   child: const Text(''),
+                //   onPressed: () => _launchUrl(kGithubRepo),
+                // ),
               ],
             ),
             const SizedBox(height: 20),
@@ -301,9 +301,9 @@ class CanvasSideBar extends HookWidget {
             const Divider(),
             Center(
               child: GestureDetector(
-                onTap: () => _launchUrl('https://github.com/JideGuru'),
+                onTap: () => _launchUrl('https://github.com/AvaiyaKashyap/drawing-canvas'),
                 child: const Text(
-                  'Made with 💙 by JideGuru',
+                  'Made with 💙 by SussyCat',
                   style: TextStyle(fontSize: 12),
                 ),
               ),
