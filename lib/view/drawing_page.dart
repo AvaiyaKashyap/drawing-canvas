@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:aura_box/aura_box.dart';
 
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_drawing_board/main.dart';
@@ -33,10 +34,29 @@ class DrawingPage extends HookWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            color: kCanvasColor,
-            width: double.maxFinite,
-            height: double.maxFinite,
+          AuraBox(
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            spots: [
+              AuraSpot(
+                color: Colors.blue,
+                radius: 100.0,
+                alignment: Alignment.center,
+                blurRadius: 5.0,
+                stops: const [0.0, 0.5],
+              ),
+              // Places one red spot in the bottom right
+              AuraSpot(
+                color: Colors.red,
+                radius: 150.0,
+                alignment: Alignment.bottomRight,
+                blurRadius: 10.0,
+                stops: const [0.0, 0.7],
+              ),
+            ],
             child: DrawingCanvas(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,

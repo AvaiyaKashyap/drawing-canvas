@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
+import 'package:aura_box/aura_box.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_drawing_board/main.dart';
 import 'package:flutter_drawing_board/view/drawing_canvas/models/drawing_mode.dart';
@@ -57,7 +58,7 @@ class DrawingCanvas extends HookWidget {
     final offset = box.globalToLocal(details.position);
     currentSketch.value = Sketch.fromDrawingMode(
       Sketch(
-        points: [offset],
+        points: [offset], 
         size: drawingMode.value == DrawingMode.eraser
             ? eraserSize.value
             : strokeSize.value,
@@ -106,14 +107,33 @@ class DrawingCanvas extends HookWidget {
         builder: (context, sketches, _) {
           return RepaintBoundary(
             key: canvasGlobalKey,
-            child: Container(
-              height: height,
-              width: width,
-              color: kCanvasColor,
-              child: CustomPaint(
-                painter: SketchPainter(
-                  sketches: sketches,
-                  backgroundImage: backgroundImage.value,
+            child: AuraBox(
+              spots: [
+                AuraSpot(
+                  color: Colors.blue,
+                  radius: 100.0,
+                  alignment: Alignment.center,
+                  blurRadius: 5.0,
+                  stops: const [0.0, 0.5],
+                ),
+                // Places one red spot in the bottom right
+                AuraSpot(
+                  color: Colors.red,
+                  radius: 150.0,
+                  alignment: Alignment.bottomRight,
+                  blurRadius: 10.0,
+                  stops: const [0.0, 0.7],
+                ),
+              ],
+              child: Container(
+                height: height,
+                width: width,
+                color: kCanvasColor,
+                child: CustomPaint(
+                  painter: SketchPainter(
+                    sketches: sketches,
+                    backgroundImage: backgroundImage.value,
+                  ),
                 ),
               ),
             ),

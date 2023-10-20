@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  aura_box:
+    dependency: "direct main"
+    description:
+      name: aura_box
+      sha256: "9cb04be3bc07298db5fd3333c5d6d48163d5dc6205acfcafbe4a04894cd8433e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   boolean_selector:
     dependency: transitive
     description:
